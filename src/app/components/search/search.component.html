@@ -1,1 +1,11 @@
-<p>search works!</p>
+
+<div class="container-xl container-lg container-md container-sm mb-5">
+        <input 
+            #searchArtists
+            type="text" 
+            (keyup)="searchArtist(searchArtists.value)" 
+            class="form-control" 
+            placeholder="Search artist">
+</div>
+
+<app-cards [items]="artists"></app-cards>
