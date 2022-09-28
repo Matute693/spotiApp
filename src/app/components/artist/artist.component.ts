@@ -11,7 +11,28 @@ import { SpotifyService } from '../../services/spotify.service';
     display: flex;
     justify-content: center;
   }
-  
+  .d-none-desktop {
+    display: none;
+  }
+  @media( max-width: 765px) {
+    .container__image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  } 
+    .img-mobile { 
+        width:100%
+    }
+    .d-none-765 {
+      display: none;
+    }
+  }
+  @media( min-width: 765px) {
+    .d-none-800 {
+      display: none;
+    }
+  }
   `
   ]
 })
@@ -21,6 +42,8 @@ export class ArtistComponent {
   public topTracks: any[] = [];
   public loading: boolean = false;
   public image: string = '';
+  public mobile: boolean = false;
+  public desktop: boolean = true;
   public populationColor: boolean = false;
 
 
@@ -36,7 +59,7 @@ export class ArtistComponent {
       this.colorPopulation(params['population']);
     });
    }
-
+   
    getArtist( id: string) {
      this.loading = true;
      this.spotifyService.getArtist(id)
@@ -54,8 +77,7 @@ export class ArtistComponent {
      if (population < 50) {
       return this.populationColor = false;
     } else {
-      return this.populationColor = true;
-       
+      return this.populationColor = true;   
      }
    }
 
@@ -65,5 +87,5 @@ export class ArtistComponent {
         this.topTracks = topTracks;
         console.log(topTracks)
       })
- }
+  }
 }
