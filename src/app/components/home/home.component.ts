@@ -11,18 +11,24 @@ import { SpotifyService } from '../../services/spotify.service';
 export class HomeComponent {
 
   public newSongs: any[] = [];
-  public loading: boolean = false;
+  public loading: boolean = true;
+  public error: boolean = false;
+  public messageError: string = '';
+  public messageStatus: string = '';
 
   constructor( 
     private http: HttpClient,
     private spotify: SpotifyService  ) {
-
-      this.loading = false;
       
       this.spotify.getNewRealeses()
         .subscribe( ( data: any ) => {
           this.newSongs = data;
-          this.loading = true;
+          this.loading = false;
+      }, ( err ) => {
+        this.error = true;
+        this.loading = false;
+        this.messageError = err.error.error.message;
+        this.messageStatus = err.error.error.status
       });
 
    }

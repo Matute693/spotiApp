@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ArtistComponent } from './components/artist/artist.component';
@@ -18,6 +19,7 @@ const myComponent = [ AppComponent, HomeComponent, ArtistComponent, NavbarCompon
   declarations: [
   myComponent,
   NoimagePipe,
+  DomseguroPipe,
   LoadingComponent,
   ],
   imports: [
