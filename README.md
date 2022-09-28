@@ -1,27 +1,23 @@
-# Spotiapp
+# SpotiApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
 
-## Development server
+In this project I consume the Spotify API and different endpoints to obtain information through observables.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Information about Spotify API
 
-## Code scaffolding
+https://developer.spotify.com/dashboard/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1) You must generate an application in Spotify Generate an `access token`, token access expires every hour.
 
-## Build
+2) then paste that access token into the request headers inside the spotify.service.ts file
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3) `client_secret` and `client_id` are generated with a new application in the dashboard section.
 
-## Running unit tests
+ENDPOINT:  
+https://accounts.spotify.com/api/token
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+body 
+grant_type: client_credentials
+client_id:
+client_secret:
