@@ -7,21 +7,12 @@ import { map } from 'rxjs/operators';
 })
 export class SpotifyService {
 
-  // requestRestCountryAPI() {
-  //   console.log('Constructor del home');
-  //   this.http.get(`https://restcountries.com/v2/lang/es`)
-  //     .subscribe( (resp:any) => {
-  //       this.countries = resp;
-  //       console.log( resp );
-  //     });
-  // }
-
   getQuery( query: string) {
 
     const url = `https://api.spotify.com/v1/${ query }`
 
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQCNVutuGS-r48tmLci7wSC4FoAdRGlNT0RePvevu17P6pPTuV1jWsxuj89zclKYAGc4DYagVDCxVMaxCfsIxbjKNLvoWoYW5Qer6Akn8azSw3VgiLs'
+      'Authorization': 'Bearer BQAt-Eq7TnmI7CfKoeKii6Y6ntA3cN3AO6UuMBua7Xo_bEXjBYzyMzwH6JCBxJfBG9nK0ngb0XxnLibdTA0eJfuOkfjVZ5JaqomzbO5fB7wVmXLcALU'
     });
 
     return this.http.get(url, { headers })
@@ -35,7 +26,16 @@ export class SpotifyService {
   }
 
   getArtists( input: string) {
-    return this.getQuery(`search?q=${ input }&type=artist&market=ES&limit=15`)
+    return this.getQuery(`search?q=${ input }&type=artist&market=us&limit=15`)
         .pipe(map( (data: any) =>  data['artists'].items ));
+  }
+
+  getArtist( id: string ) {
+    return this.getQuery(`artists/${ id }`)
+  }
+
+  getTopSongs( id: string ) {
+    return this.getQuery(`artists/${id}/top-tracks?market=us`)
+      .pipe( map( ( data: any) => data['tracks']))
   }
 }

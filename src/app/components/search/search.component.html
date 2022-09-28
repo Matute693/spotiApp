@@ -8,4 +8,6 @@
             placeholder="Search artist">
 </div>
 
-<app-cards [items]="artists"></app-cards>
+<app-loading *ngIf="loading"></app-loading>
+
+<app-cards *ngIf="!loading" [items]="artists"></app-cards>
